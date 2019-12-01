@@ -1,0 +1,8 @@
+
+*.txt
+*.feat
+*.pt
+*.zip
+*.gz
+.data/imdb/aclImdb/README
+.data/imdb/aclImdb/imdb.vocab

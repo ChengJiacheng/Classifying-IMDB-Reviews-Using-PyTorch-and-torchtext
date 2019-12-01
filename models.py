@@ -21,11 +21,11 @@ class Naive_Clf(nn.Module):
         return out
     
 class IMDBRnn(nn.Module):
-    def __init__(self, vocab_size, dim_embdeding, num_classes=2, num_layers=1):
+    def __init__(self, vocab_size, dim_embdeding, num_classes=2, num_layers=2):
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, dim_embdeding)
         h1, h2 =  256, 512
-        self.rnn = nn.LSTM(dim_embdeding, h1, num_layers=num_layers, batch_first=True)
+        self.rnn = nn.LSTM(dim_embdeding, h1, num_layers=num_layers, batch_first=True, dropout =0.5)
         self.classifier = nn.Sequential(
                 nn.Dropout(0.5),
                 nn.Linear(h1, num_classes),
@@ -62,7 +62,7 @@ class IMDBCnn(nn.Module):
         super().__init__()
 
         self.embedding = nn.Embedding(vocab_size, dim_embdeding)        
-        out_channels, output_size = 256, 10
+        out_channels, output_size = 256, 20
         
         self.cnn = nn.Conv1d(in_channels = fix_length, out_channels=out_channels, kernel_size=3)
         self.avg = nn.AdaptiveAvgPool1d(output_size = output_size)

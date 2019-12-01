@@ -5,4 +5,4 @@ Pretrained Glove or random intialized embedding are used as representations of w
 
 Codes are runned on the environment where
 PyTorch Version = 1.3.1,
-torchtext Version:  0.4.0.
+torchtext Version =  0.4.0.
